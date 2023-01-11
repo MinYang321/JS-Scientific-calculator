@@ -1,0 +1,256 @@
+/* Author: Min Yang */
+/* project: Scientific Calculator */
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+input {
+    width: 100%;
+    text-align: right;
+    border: none;
+    overflow: scroll;
+}
+button {
+    font-size: medium;
+}
+.white-button {
+    background-color: rgb(250, 250, 250);
+    border-width: 1px;
+    border-radius: 3px;
+    font-size: larger;
+}
+.white-button:hover {
+    background-color: white;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows:50px 50px 50px 50px 50px 50px 50px;
+    gap: 3px;
+    justify-content:space-evenly;
+    align-items: center;
+
+}
+
+.grid-container > div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.grid-container button {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.item-r1c1 {
+    grid-row: 1;
+    grid-column: 1;
+}
+.item-r1c2 {
+    grid-row: 1;
+    grid-column: 2;
+}
+.item-r1c3 {
+    grid-row: 1;
+    grid-column: 3;
+}
+.item-r1c4 {
+    grid-row: 1;
+    grid-column: 4;
+}
+
+.item-r1c5 {
+    grid-row: 1;
+    grid-column: 5;
+}
+.item-r2c1 {
+    grid-row: 2;
+    grid-column: 1;
+}
+.item-r2c2 {
+    grid-row: 2;
+    grid-column: 2;
+}
+.item-r2c3 {
+    grid-row: 2;
+    grid-column: 3;
+}
+.item-r2c4 {
+    grid-row: 2;
+    grid-column: 4;
+}
+
+.item-r2c5 {
+    grid-row: 2;
+    grid-column: 5;
+}
+.item-r3c1 {
+    grid-row: 3;
+    grid-column: 1;
+}
+.item-r3c2 {
+    grid-row: 3;
+    grid-column: 2;
+}
+.item-r3c3 {
+    grid-row: 3;
+    grid-column: 3;
+}
+.item-r3c4 {
+    grid-row: 3;
+    grid-column: 4;
+}
+
+.item-r3c5 {
+    grid-row: 3;
+    grid-column: 5;
+}
+
+.item-r4c1 {
+    grid-row: 4;
+    grid-column: 1;
+}
+.item-r4c2 {
+    grid-row: 4;
+    grid-column: 2;
+}
+.item-r4c3 {
+    grid-row: 4;
+    grid-column: 3;
+}
+.item-r4c4 {
+    grid-row: 4;
+    grid-column: 4;
+}
+
+.item-r4c5 {
+    grid-row: 4;
+    grid-column: 5;
+}
+.item-r5c1 {
+    grid-row: 5;
+    grid-column: 1;
+}
+.item-r5c2 {
+    grid-row: 5;
+    grid-column: 2;
+}
+.item-r5c3 {
+    grid-row: 5;
+    grid-column: 3;
+}
+.item-r5c4 {
+    grid-row: 5;
+    grid-column: 4;
+}
+
+.item-r5c5 {
+    grid-row: 5;
+    grid-column: 5;
+}
+.item-r6c1 {
+    grid-row: 6;
+    grid-column: 1;
+}
+.item-r6c2 {
+    grid-row: 6;
+    grid-column: 2;
+}
+.item-r6c3 {
+    grid-row: 6;
+    grid-column: 3;
+}
+.item-r6c4 {
+    grid-row: 6;
+    grid-column: 4;
+}
+
+.item-r6c5 {
+    grid-row: 6;
+    grid-column: 5;
+}
+.item-r7c1 {
+    grid-row: 7;
+    grid-column: 1;
+}
+.item-r7c2 {
+    grid-row: 7;
+    grid-column: 2;
+}
+.item-r7c3 {
+    grid-row: 7;
+    grid-column: 3;
+}
+.item-r7c4 {
+    grid-row: 7;
+    grid-column: 4;
+}
+
+.item-r7c5 {
+    grid-row: 7;
+    grid-column: 5;
+}
+
+.item-r7c5 button {
+    background-color: rgb(108, 101, 205);
+    border-width: 1px;
+    border-radius: 3px;
+}
+
+.item-r7c5 button:hover {
+    background-color: rgb(158, 154, 210);
+}
+
+#expression {
+    width:100%;
+    height: 25px;
+}
+
+#result {
+    width: 100%;
+    height: 75px;
+    font-size: 35px;
+    font-weight: bold;
+    color:black;
+}
+
+.overlay-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.bottom {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.underlay {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}

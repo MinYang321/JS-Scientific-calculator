@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="author" content="Min Yang">
+        <meta name="keyword" content="calculator">
+        <meta nam="viewport" content="width=device width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="./js/calculator.js" defer></script>
+        <title>Windows Scientific Caculator</title>
+    </head>
+    <body>
+        <header>
+            <h2>Min's Scientific Calculator</h2>
+        </header>
+            <div>
+                <input type="text" id="expression" value="" disabled>
+                <input type="text" id="result" value="0" disabled>
+                <div class="grid-container">
+                    <div class="item-r1c1"><button id="2nd-function" type="button" value="2nd">2<sup>nd</sup></button></div>
+                    <div class="item-r1c2"><button id="pi" type="button" value="&#960">&#960;</button></div>
+                    <div class="item-r1c3"><button id="e" type="button" value="e">e</button></div>
+                    <div class="item-r1c4"><button id="clear" type="button" value="C">C</button></div>
+                    <div class="item-r1c5"><button id="backspace" type="button" value="backspace">⌫</button></div>
+                    <div class="item-r2c1 overlay-container">
+                        <div class="bottom">
+                            <button id="cube" type="button" value="cube">x<sup>3</sup></button>
+                        </div>
+                        <div class="overlay">
+                            <button id="square" type="button" value="sqr">x<sup>2</sup></button>
+                        </div>
+                    </div>
+                    <div class="item-r2c2"><button id="recprc" type="button" value="1/">1/x</button></div>
+                    <div class="item-r2c3"><button id="abs" type="button" value="abs">|x|</button></div>
+                    <div class="item-r2c4"><button id="exp" type="button" value=".e+">exp</button></div>
+                    <div class="item-r2c5"><button id="mod" type="button" value="%">mod</button></div>
+                    <div class="item-r3c1 overlay-container">
+                        <div class="bottom">
+                            <button id="cbrt" type="button" value="cbrt">&#8731;x</sup></button>
+                        </div>
+                        <div class="overlay">
+                            <button id="sqrt" type="button" value="sqrt">&#8730;x</sup></button>
+                        </div>
+                    </div>
+                    <div class="item-r3c2"><button id="leftprt" type="button" value="(">(</button></div>
+                    <div class="item-r3c3"><button id="rightprt" type="button" value=")">)</button></div>
+                    <div class="item-r3c4"><button id="factorial" type="button" value="factorial">n!</button></div>
+                    <div class="item-r3c5"><button id="divide" type="button" value="/"><span style="font-size:large">&divide;</span></button></div>
+                    <div class="item-r4c1 overlay-container">
+                        <div class="bottom">
+                            <button id="nth-root" type="button" value="nthRoot"><sup>y</sup>&#8730;x</button>
+                        </div>
+                        <div class="overlay">
+                            <button id="power" type="button" value="^">x<sup>y</sup></button>
+                        </div>    
+                    </div>
+                    <div class="item-r4c2"><button id="7" type="button" value="7" class="white-button">7</button></div>
+                    <div class="item-r4c3"><button id="8" type="button" value="8" class="white-button">8</button></div>
+                    <div class="item-r4c4"><button id="9" type="button" value="9" class="white-button">9</button></div>
+                    <div class="item-r4c5"><button id="mulitply" type="button" value="*"><span style="font-size:large">&times;</span></button></div>
+                    <div class="item-r5c1 overlay-container">
+                        <div class="bottom">
+                            <button id="two-base-power" type="button" value="2^">2<sup>x</sup></button>
+                        </div>
+                        <div class="overlay">
+                            <button id="ten-base-power" type="button" value="10^">10<sup>x</sup></button>
+                        </div>
+                    </div>
+                    <div class="item-r5c2"><button id="4" type="button" value="4" class="white-button">4</button></div>
+                    <div class="item-r5c3"><button id="5" type="button" value="5" class="white-button">5</button></div>
+                    <div class="item-r5c4"><button id="6" type="button" value="6" class="white-button">6</button></div>
+                    <div class="item-r5c5"><button id="subtract" type="button" value="-"><span style="font-size:large">&minus;</span></button></div>
+                    <div class="item-r6c1 overlay-container">
+                        <div class="bottom">
+                            <button id="nbase-log" type="button" value="logbsN">log<sub>y</sub>x</button>
+                        </div>
+                        <div class="overlay">
+                            <button id="log" type="button" value="log">log</button>
+                        </div>
+                    </div>
+                    <div class="item-r6c2"><button id="1" type="button" value="1" class="white-button">1</button></div>
+                    <div class="item-r6c3"><button id="2" type="button" value="2" class="white-button">2</button></div>
+                    <div class="item-r6c4"><button id="3" type="button" value="3" class="white-button">3</button></div>
+                    <div class="item-r6c5"><button id="add" type="button" value="+"><span style="font-size:large">&plus;</span></button></div>
+                    <div class="item-r7c1 overlay-container">
+                        <div class="bottom">
+                            <button id="e-base-power" type="button" value="e^">e<sup>x</sup></button>
+                        </div>
+                        <div class="overlay">
+                            <button id="ln" type="button" value="ln">ln</button>
+                        </div>                       
+                    </div>
+                    <div class="item-r7c2"><button id="sign" type="button" value="+/-" class="white-button">+/-</button></div>
+                    <div class="item-r7c3"><button id="0" type="button" value="0" class="white-button">0</button></div>
+                    <div class="item-r7c4"><button id="decimal-point" type="button" value="." class="white-button"><span style="font-size:large; font-weight:500;">.</span></button></div>
+                    <div class="item-r7c5"><button id="equal" type="button" value="="><span style="font-size:large; color: white;">&equals;</span></button></div>                    
+                </div>
+            </div>        
+    </body>
+</html>
