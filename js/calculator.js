@@ -5,7 +5,7 @@ let mathExp = "";
 
 
 /**
- * const variables declaration
+ * const variables declaration and assign button elements to the variables for later processing
  */
 const inputExp = document.getElementById("expression");
 const result = document.getElementById("result");
@@ -59,6 +59,7 @@ const clear = document.getElementById("clear");
 /**
  * user-defined functions to fulfil the logic and actions associated with click event of related button elements
  */
+//find the index of last occurrence of the operators (+, -, *, /, mod) in the maths expression string
 function findIndexofLastOperatorOfMathExp(exp) {
     let index = "null";
     for (let i = exp.length - 1; i >= 0; i--) {
@@ -69,6 +70,7 @@ function findIndexofLastOperatorOfMathExp(exp) {
     }
     return index;
 }
+//find the index of Left-Hand parenthese matching the Right-Hand parenthese which is the last characeter in the maths expression string
 function findIndexofMathcingLHParenthese(exp) {
     let index = "null";
     for (let i = exp.length - 1; i >= 0; i--) {
@@ -79,21 +81,27 @@ function findIndexofMathcingLHParenthese(exp) {
     }
     return index;
 }
+//compute the squre of a number
 function sqr(number) {
     return number * number;
 }
+//compute the cube of a number
 function cube(number) {
     return number * number * number;
 }
+//compute the squre root of a number
 function sqrt(number) {
     return Math.sqrt(number);
 }
+//compute the cube root of a number
 function cbrt(number) {
     return Math.cbrt(number);
 }
+//compute the absoulate value of a number
 function abs(number) {
     return Math.abs(number);
 }
+//compute any user-specified nth root of a number
 function nthRoot(number, exponent) {
     let positiveNumber;
     let result;
@@ -105,21 +113,26 @@ function nthRoot(number, exponent) {
         return result = Math.pow(number, 1 / exponent);
     }
 }
+//compuate the factorial of a number (n!)
 function factorial(number) {
     if (number == 0 || number == 1) {
         return 1;
     }
     return number * factorial(number-1);
 }
+//compute the logrithm of a number with any user-specified base
 function logbsN(number, base) {
     return Math.log(number)/Math.log(base);
 }
+//compute the 10-base logrithm of a number
 function log(number) {
     return Math.log10(number);
 }
+//compute e-base (natural) logrithm of a number
 function ln(number) {
     return Math.log(number);
 }
+//function to put the non-2nd button elements under the 2nd-Func button elements calling a .underlay css class (2nd-Func button toggole on)
 function activate2ndButton() {
     SQUARE.parentElement.className = "underlay";
     SQRT.parentElement.className = "underlay";
@@ -128,6 +141,7 @@ function activate2ndButton() {
     LOG.parentElement.className = "underlay";
     LN.parentElement.className = "underlay";
 }
+//function to put the non-2nd button elements on top of the 2nd-Func button elements calling a .underlay css class (2nd-Func button toggole off)
 function deactivate2ndButton() {
     SQUARE.parentElement.className = "overlay";
     SQRT.parentElement.className = "overlay";
@@ -136,6 +150,7 @@ function deactivate2ndButton() {
     LOG.parentElement.className = "overlay";
     LN.parentElement.className = "overlay";
 }
+//put the operands into the maths expression string at appropriate position under different situations, for eval() parsing correctly
 function applyOperandToMathExp(inputExp, operand) {
     let oldStr = inputExp;
     if (oldStr[oldStr.length - 1] == ")") {
@@ -148,6 +163,7 @@ function applyOperandToMathExp(inputExp, operand) {
         return inputExp += operand;
     }
 }
+//put the operators into the maths expression string at appropriate position under different situations, for eval() parsing correctly
 function applyOperatorToMathExp(inputExp, operator, result) {
     if (inputExp.slice(-1) == "=") {
         inputExp = "";
@@ -160,9 +176,10 @@ function applyOperatorToMathExp(inputExp, operator, result) {
         return inputExp += operator;
     }  
 }
+//put the above self-defined functions into the maths expression string at appropriate positions under different situations, for eval() parsing correctly
 function applyFuncToMathExp(currentInputExp, funcName, result) {
     let newInputExp ="";
-    if (currentInputExp == "") {// handle no string in inputbox
+    if (currentInputExp == "") {// handle no string in result inputbox
         return newInputExp = funcName + "(" + result + ")";
     }
     else {
@@ -195,20 +212,23 @@ function applyFuncToMathExp(currentInputExp, funcName, result) {
 
 
 /**
- * bind functions/actions to click events on corresponding related button elements
- * fulfil the functionalities which the calcualtor is bound to have
+ * bind functions/actions to click events on corresponding button elements
+ * fulfil the functionalities which the calcualtor is supposed to do
  */
 SECOND_FUNC.addEventListener("click", () => {
     let style = getComputedStyle(SECOND_FUNC);
-    if(style['background-color'] != "rgb(108, 101, 205)") {
-        SECOND_FUNC.style.backgroundColor = "rgb(108, 101, 205)";
+    if(style['background-color'] != "rgb(108, 101, 205)") {// juding whether the 2nd-Func button is at 'OFF' status or not by comparing the button css background color
+        activate2ndButton(); // call the function above to show 2nd-Func related buttons
+
+        // apply new styling to 2nd-Func button
+        SECOND_FUNC.style.backgroundColor = "rgb(108, 101, 205)"; 
         SECOND_FUNC.style.borderWidth= "1px";
         SECOND_FUNC.style.borderRadius= "3px";
-        activate2ndButton();
+
     }
-    else {
-        SECOND_FUNC.style = "auto";
-        deactivate2ndButton();
+    else {// else the 2nd-Func button is at "ON" status and do the opposite
+        deactivate2ndButton(); // call the function above to hide 2nd-Func related buttons
+        SECOND_FUNC.style = "auto"; // change the 2nd-Func button styling to default setting
     }
 });
 PI.addEventListener("click", () => {
@@ -298,7 +318,7 @@ rightParenthese.addEventListener("click", () => {
     inputExp.value += rightParenthese.value;
 });
 decimalPoint.addEventListener("click", () => {
-    //judge if last char is not a number
+    //judge if last character is non-number
     if (!(/^\d$/.test(inputExp.value.slice(-1)))){
         inputExp.value += "0";
     }
@@ -350,9 +370,12 @@ sign.addEventListener ("click", () => {
     }
 });
 
+//"⌫" button click event handler
 backspace.addEventListener("click", () => {
     inputExp.value = inputExp.value.slice(0, -1);
 });
+
+//"=" button click event handler
 evaluate.addEventListener("click", () => {
     if (inputExp.value.slice(-1) !== "=") {
         mathExp = inputExp.value;
@@ -363,13 +386,14 @@ evaluate.addEventListener("click", () => {
             mathExp = mathExp.replace("e^", "(Math.E)^");
             mathExp = mathExp.replace("e", "(Math.E)");
             mathExp = mathExp.replace("^", "**");
-            result.value = eval(mathExp);
+            result.value = eval(mathExp); //call intrinsic eval() function to evaluate the maths expression
         } catch (error) {
-            result.value = error.message;
+            result.value = error.message; //catch the error msg and gets displayed in the result inputbox if the maths expression is invalid (parsed incorrectly by eval() functions)
     }
     }
 });
 
+//"C" button click event handler to wipe out contents in all display input boxes
 clear.addEventListener("click", () => {
     mathExp = "";
     inputExp.value = "";
